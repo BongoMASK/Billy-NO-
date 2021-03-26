@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         mouseSensText.text = PlayerPrefs.GetInt("sensitivity", 50).ToString();
         volume = PlayerPrefs.GetInt("volume", 100);
 
-        //PlayerMovement.sensitivity = sensitivity;
+        PlayerMovement.sensitivity = sensitivity;
         MovementNoNetworking.sensitivity = sensitivity;
         AudioListener.volume = volume/100;
     }
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ChangeMouseSens(float newSens) {
-        //PlayerMovement.sensitivity = newSens;
+        PlayerMovement.sensitivity = newSens;
         MovementNoNetworking.sensitivity = newSens;
         PlayerPrefs.SetInt("sensitivity", (int)newSens);
         mouseSensText.text = ((int)newSens).ToString();
