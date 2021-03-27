@@ -72,6 +72,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
     [SerializeField] const float maxHealth = 100f;
     float currentHealth = maxHealth;
 
+    [SerializeField] TMP_Text healthText;
+
     PlayerManager playerManager;
 
     void Awake() {
@@ -138,6 +140,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
         if(canvas != null) {
             canvas.SetActive(!GameManager.gameIsPaused);
         }
+
+        healthText.text = currentHealth.ToString();
 
         Respawn();
         Sounds();
