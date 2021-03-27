@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using TMPro;
 
 public class ProjectileGun : Gun
 {
@@ -13,12 +14,15 @@ public class ProjectileGun : Gun
     [SerializeField] float fireCountdown = 0, reloadCountdown = reloadTime;
     [SerializeField] int currentAmmo = maxAmmo;
 
+    [SerializeField] TMP_Text ammoText; 
+    [SerializeField] TMP_Text weaponText;
+
     public override void Use() {
         Shoot();
     }
 
     private void Update() {
-        if(currentAmmo < maxAmmo) {
+        if(currentAmmo < maxAmmo && itemGameObject.activeSelf) {
             if(reloadCountdown <= 0f) {
                 currentAmmo++;
                 reloadCountdown = reloadTime;
@@ -26,6 +30,11 @@ public class ProjectileGun : Gun
             reloadCountdown -= Time.deltaTime;
         }
         fireCountdown -= Time.deltaTime;
+
+        if (itemGameObject.activeSelf) {
+            ammoText.text = currentAmmo.ToString();
+            weaponText.text = itemInfo.itemName;
+        }
     }
 
     void Shoot() {
