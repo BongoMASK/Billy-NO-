@@ -51,12 +51,12 @@ public class ProjectileGun : Gun
         if (fireCountdown <= 0f && currentAmmo > 0) {
             //GameObject b = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", bulletName), shootingPoint.transform.position, Quaternion.identity);
             Vector3 direction = camera.transform.forward;
-            PV.RPC("RPC_SpawnProjectile", RpcTarget.All, shootingPoint.transform.position, direction);
+            PV.RPC("RPC_SpawnProjectile", RpcTarget.Others, shootingPoint.transform.position, direction);
 
-            /*GameObject b = Instantiate(bullet, shootingPoint.transform.position, Quaternion.identity) as GameObject;
+            GameObject b = Instantiate(bullet, shootingPoint.transform.position, Quaternion.identity);
             Rigidbody rb = b.GetComponentInChildren<Rigidbody>();
+            rb.AddForce(direction * speedx);
             rb.AddForce(Vector2.up * speedy);
-            rb.AddForce(camera.transform.forward * speedx);*/
 
             fireCountdown = fireRate;
             reloadCountdown = reloadTime;
@@ -67,12 +67,10 @@ public class ProjectileGun : Gun
     [PunRPC]
     void RPC_SpawnProjectile(Vector3 shootingPoint, Vector3 cameraPoint) {
         GameObject b = Instantiate(bullet, shootingPoint, Quaternion.identity);
+        Collider c = b.GetComponentInChildren<Collider>();
+        Destroy(c);
         Rigidbody rb = b.GetComponentInChildren<Rigidbody>();
         rb.AddForce(cameraPoint * speedx);
         rb.AddForce(Vector2.up * speedy);
-        Debug.Log("lol");
-
-        //Debug.Log(shootingPoint);
-        //Instantiate(bullet, shootingPoint, Quaternion.identity);
     }
 }
