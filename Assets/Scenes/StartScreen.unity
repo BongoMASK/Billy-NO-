@@ -3178,11 +3178,11 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
+  observableSearch: 2
   ObservedComponents: []
-  viewIdField: 1
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &713186716
@@ -3823,7 +3823,7 @@ GameObject:
   - component: {fileID: 795448863}
   - component: {fileID: 795448862}
   m_Layer: 5
-  m_Name: Supertag
+  m_Name: Larano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3845,7 +3845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1289, y: -60}
+  m_AnchoredPosition: {x: 1218, y: -60}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &795448862
@@ -3867,7 +3867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SuperTAG
+  m_text: Larano
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b8ea0cef398fd442979137de0dc7ead, type: 2}
   m_sharedMaterial: {fileID: 8070271059062291539, guid: 6b8ea0cef398fd442979137de0dc7ead,
@@ -6868,7 +6868,7 @@ GameObject:
   - component: {fileID: 1264406226}
   - component: {fileID: 1264406225}
   m_Layer: 5
-  m_Name: byBongo
+  m_Name: by someone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6912,7 +6912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: by Bongo
+  m_text: by Finn and Bongo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b8ea0cef398fd442979137de0dc7ead, type: 2}
   m_sharedMaterial: {fileID: 8070271059062291539, guid: 6b8ea0cef398fd442979137de0dc7ead,
@@ -8140,7 +8140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

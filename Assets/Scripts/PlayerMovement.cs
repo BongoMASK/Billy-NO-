@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
     float currentHealth = maxHealth;
 
     PlayerManager playerManager;
+    ProjectileGun[] projectileGun;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -107,6 +108,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
         countdownStart = (int)PhotonNetwork.CurrentRoom.CustomProperties["tagCountdown"];
 
         FindObjectOfType<AudioManager>().Play("Breeze");
+
+            Debug.Log("set items");
+        for (int i = 0; i < items.Length; i++) {
+            projectileGun[i] = items[i].GetComponent<ProjectileGun>();
+            projectileGun[i].currentAmmo = projectileGun[i].maxAmmo;
+            projectileGun[i].reloadCountdown = projectileGun[i].reloadTime;
+        }
+
+        
     }
 
     private void FixedUpdate() {
@@ -272,9 +282,20 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
             EquipItem(itemIndex - 1);
         }
 
-        if(Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0)) {
             items[itemIndex].Use();
+            items[itemIndex].GetComponent<ProjectileGun>().reloadCountdown = items[itemIndex].GetComponent<ProjectileGun>().reloadTime;
         }
+
+        if (items[itemIndex].GetComponent<ProjectileGun>().currentAmmo < items[itemIndex].GetComponent<ProjectileGun>().maxAmmo) {
+            if(items[itemIndex].GetComponent<ProjectileGun>().reloadCountdown <= 0f) {
+                items[itemIndex].GetComponent<ProjectileGun>().currentAmmo++;
+                items[itemIndex].GetComponent<ProjectileGun>().reloadCountdown = items[itemIndex].GetComponent<ProjectileGun>().reloadTime;
+            }
+            items[itemIndex].GetComponent<ProjectileGun>().reloadCountdown -= Time.deltaTime;
+        }
+
+        items[itemIndex].GetComponent<ProjectileGun>().fireCountdown -= Time.deltaTime;
     }
 
     void EquipItem(int _index) {

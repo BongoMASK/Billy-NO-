@@ -406,7 +406,12 @@ MonoBehaviour:
   camera: {fileID: 7799819605255452934}
   speedx: 5000
   speedy: 500
-  ammo: 20
+  maxAmmo: 3
+  reloadTime: 1
+  fireRate: 0.6
+  fireCountdown: 0
+  reloadCountdown: 0
+  currentAmmo: 0
 --- !u!1 &2046071288461815694
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +994,12 @@ MonoBehaviour:
   camera: {fileID: 7799819605255452934}
   speedx: 7000
   speedy: 0
-  ammo: 2
+  maxAmmo: 3
+  reloadTime: 4
+  fireRate: 0.4
+  fireCountdown: 0
+  reloadCountdown: 0
+  currentAmmo: 0
 --- !u!1 &5710258945835361988
 GameObject:
   m_ObjectHideFlags: 0
