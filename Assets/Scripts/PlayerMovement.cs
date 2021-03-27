@@ -528,61 +528,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IDamageable {
     float countdown = 5f;
     public float countdownStart = 5f;
 
-    /*private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.CompareTag("Player") && countdown <= 0f) {
-            if ((int)PV.Owner.CustomProperties["team"] == 1 &&
-            (int)PhotonView.Find(other.gameObject.GetComponent<PhotonView>().ViewID).Owner.CustomProperties["team"] == 0) {
-
-                // calling function to master client because only the master client can change the custom properties of other players
-                PV.RPC("RPC_SwitchPlayerTeam", RpcTarget.MasterClient, other.gameObject.GetComponent<PhotonView>().ViewID, 1);
-
-                ChangeMyTeam(0);
-                countdown = countdownStart;
-            }
-        }
-    }*/
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Player") && countdown <= 0f) {
-            if ((int)PV.Owner.CustomProperties["team"] == 1 &&
-            (int)PhotonView.Find(other.gameObject.GetComponent<PhotonView>().ViewID).Owner.CustomProperties["team"] == 0) {
-
-                // calling function to master client because only the master client can change the custom properties of other players
-                PV.RPC("RPC_SwitchPlayerTeam", RpcTarget.MasterClient, other.gameObject.GetComponent<PhotonView>().ViewID, 1);
-
-                ChangeMyTeam(0);
-                countdown = countdownStart;
-            }
-            else if ((int)PV.Owner.CustomProperties["team"] == 0 &&
-                (int)PhotonView.Find(other.gameObject.GetComponent<PhotonView>().ViewID).Owner.CustomProperties["team"] == 1) {
-
-                // calling function to master client because only the master client can change the custom properties of other players
-                PV.RPC("RPC_SwitchPlayerTeam", RpcTarget.MasterClient, other.gameObject.GetComponent<PhotonView>().ViewID, 0);
-
-                ChangeMyTeam(1);
-                countdown = countdownStart;
-            }
-        }
-    }
-
-    [PunRPC]
-    void RPC_SwitchPlayerTeam(int viewID, int team) {
-        Hashtable hash = new Hashtable {
-            { "team", team },
-            { "TeamName", PlayerInfo.Instance.allTeams[team] }
-        };
-
-        PhotonView.Find(viewID).Owner.SetCustomProperties(hash);
-    }
-
-    void ChangeMyTeam(int team) {
-        Hashtable hash2 = new Hashtable {
-            { "team", team },
-            { "TeamName", PlayerInfo.Instance.allTeams[team] }
-        };
-        PhotonNetwork.LocalPlayer.SetCustomProperties(hash2);
-    }
-
     [PunRPC]
     void RPC_PlaySound(int viewID, string name) {
         PhotonView.Find(viewID).gameObject.GetComponent<PlayerMovement>().playerAudio.Play(name);

@@ -124,6 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInfo: {fileID: 11400000, guid: 9912185814e81bb46b8d6318c42636b4, type: 2}
+  destroyTime: 5
+  damageNumber: {fileID: 4194077725240792296, guid: b94f779089cc6404d8cac39b933b0738,
+    type: 3}
 --- !u!1 &4996163600598882643
 GameObject:
   m_ObjectHideFlags: 0
