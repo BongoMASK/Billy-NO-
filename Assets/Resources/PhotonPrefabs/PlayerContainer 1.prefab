@@ -995,7 +995,7 @@ MonoBehaviour:
   speedx: 7000
   speedy: 0
   maxAmmo: 3
-  reloadTime: 4
+  reloadTime: 2
   fireRate: 0.4
   fireCountdown: 0
   reloadCountdown: 0

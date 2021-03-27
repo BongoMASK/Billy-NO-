@@ -8,13 +8,24 @@ public class ProjectileGun : Gun
 {
     [SerializeField] GameObject bullet, shootingPoint, camera;
     [SerializeField] float speedx, speedy;
-    public int maxAmmo = 3;
-    public float reloadTime = 2, fireRate = 1;
-    public float fireCountdown = 0, reloadCountdown;
-    public int currentAmmo;
+    [SerializeField] const int maxAmmo = 3;
+    [SerializeField] const float reloadTime = 2, fireRate = 1;
+    [SerializeField] float fireCountdown = 0, reloadCountdown = reloadTime;
+    [SerializeField] int currentAmmo = maxAmmo;
 
     public override void Use() {
         Shoot();
+    }
+
+    private void Update() {
+        if(currentAmmo < maxAmmo) {
+            if(reloadCountdown <= 0f) {
+                currentAmmo++;
+                reloadCountdown = reloadTime;
+            }
+            reloadCountdown -= Time.deltaTime;
+        }
+        fireCountdown -= Time.deltaTime;
     }
 
     void Shoot() {
@@ -24,6 +35,7 @@ public class ProjectileGun : Gun
             rb.AddForce(Vector2.up * speedy);
             rb.AddForce(camera.transform.forward * speedx);
             fireCountdown = fireRate;
+            reloadCountdown = reloadTime;
             currentAmmo--;
         }
     }
