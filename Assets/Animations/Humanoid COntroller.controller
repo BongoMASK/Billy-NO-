@@ -32,7 +32,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Humanoid COntroller
+  m_Name: Humanoid Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: vertical
@@ -94,15 +94,6 @@ BlendTree:
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: -9121621101649706817, guid: 75165a423d14163408ee5307993bb095,
-      type: 3}
-    m_Threshold: 2.8
-    m_Position: {x: 0, y: 1}
-    m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: vertical
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: c21246f894be608499da88ad3d7740c7,
